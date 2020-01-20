@@ -4,7 +4,11 @@ using System.Globalization;
 using System.Linq;
 using FluentValidation;
 using VendingMachine.Coin;
-using VendingMachine.Tests;
+using VendingMachine.Interface;
+using VendingMachine.Model;
+using CoinAttributes = VendingMachine.Model.CoinAttributes;
+using CoinValidator = VendingMachine.Validator.CoinValidator;
+using ICoinService = VendingMachine.Interface.ICoinService;
 
 namespace VendingMachine
 {

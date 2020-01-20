@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using VendingMachine.Coin;
-using VendingMachine.Tests;
+using VendingMachine.Model;
 
-namespace VendingMachine
+namespace VendingMachine.Interface
 {
     public interface IVendingMachine
     {

@@ -1,5 +1,7 @@
 using NUnit.Framework;
 using VendingMachine.Coin;
+using VendingMachine.Interface;
+using ICoinService = VendingMachine.Coin.ICoinService;
 
 namespace VendingMachine.Tests
 {

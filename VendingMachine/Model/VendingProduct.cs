@@ -1,4 +1,4 @@
-﻿namespace VendingMachine.Tests
+﻿namespace VendingMachine.Model
 {
     public class VendingProduct
     {

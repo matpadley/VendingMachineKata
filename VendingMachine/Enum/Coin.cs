@@ -1,4 +1,4 @@
-namespace VendingMachine.Coin
+namespace VendingMachine.Enum
 {
     public enum Coin
     {

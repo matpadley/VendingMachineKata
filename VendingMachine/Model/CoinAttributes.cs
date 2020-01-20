@@ -1,4 +1,4 @@
-﻿namespace VendingMachine.Coin
+﻿namespace VendingMachine.Model
 {
     public class CoinAttributes
     {
@@ -6,7 +6,7 @@
         public double Diameter { get; }
         public double Thickness { get; }
 
-        public Coin Coin { get; private set; }
+        public Enum.Coin Coin { get; private set; }
         public double MonetaryValue { get; private set; }
 
         public CoinAttributes(double weight, double diameter, double thickness)
@@ -16,17 +16,17 @@
             Thickness = thickness;
         }
         
-        public void SetCoin(Coin coin)
+        public void SetCoin(Enum.Coin coin)
         {
             Coin = coin;
 
             MonetaryValue = Coin switch
             {
-                Coin.Dime => 0.1,
-                Coin.Invalid => 0,
-                Coin.Nickel => 0.05,
-                Coin.Penny => 0.01,
-                Coin.Quarter => 0.25,
+                Enum.Coin.Dime => 0.1,
+                Enum.Coin.Invalid => 0,
+                Enum.Coin.Nickel => 0.05,
+                Enum.Coin.Penny => 0.01,
+                Enum.Coin.Quarter => 0.25,
                 _ => 0
             };
         }
