@@ -8,6 +8,8 @@
     <AssemblyName>VendingMachine.Tests</AssemblyName>
 
     <RootNamespace>VendingMachine</RootNamespace>
+
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
