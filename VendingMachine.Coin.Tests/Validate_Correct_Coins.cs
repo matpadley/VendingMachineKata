@@ -1,8 +1,9 @@
 ﻿using NUnit.Framework;
+using VendingMachine.Coin;
 
 namespace VendingMachine
 {
-    public class Get_Coin_Value_Tests
+    public class Validate_Correct_Coins
     {
         private ICoinService _coinService;
         
@@ -23,6 +24,19 @@ namespace VendingMachine
             _coinService.GetCoin(attributes);
             
             Assert.AreEqual(monetaryValue, attributes.MonetaryValue);
+        }
+        
+        [TestCase(2, 21.12, 1.95, Coin.Coin.Nickel)]
+        [TestCase(2.5, 19.05, 1.52, Coin.Coin.Penny)]
+        [TestCase(6.25, 24.26, 1.75, Coin.Coin.Quarter)]
+        [TestCase(2.268, 17.91, 1.35, Coin.Coin.Dime)]
+        public void Assert_Correct_Coin_Was_Entered(decimal weight, decimal diameter, decimal thickness, Coin.Coin coin)
+        {
+            var attributes = new CoinAttributes(weight, diameter, thickness);
+
+            _coinService.GetCoin(attributes);
+            
+            Assert.AreEqual(coin, attributes.Coin);
         }
     }
 }

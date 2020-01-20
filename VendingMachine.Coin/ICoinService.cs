@@ -1,4 +1,4 @@
-﻿namespace VendingMachine
+﻿namespace VendingMachine.Coin
 {
     public interface ICoinService
     {

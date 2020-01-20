@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace VendingMachine
+namespace VendingMachine.Coin
 {
     public class CoinValidator : AbstractValidator<Coin>
     {
