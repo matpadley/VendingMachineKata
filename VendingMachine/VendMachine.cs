@@ -53,5 +53,10 @@ namespace VendingMachine
         public ICollection<CoinAttributes> GetReturnTray() => _coinReturn;
         
         public double GetCurrentAmount() => _insertedCoins.Sum(coin => coin.MonetaryValue);
+        public void ReturnCoins()
+        {
+            _insertedCoins.Clear();
+            _currentDisplay = "INSERT COIN";
+        }
     }
 }

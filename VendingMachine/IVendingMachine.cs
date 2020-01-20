@@ -9,5 +9,6 @@ namespace VendingMachine
         void InsertCoin(CoinAttributes coinAttributes);
         ICollection<CoinAttributes> GetReturnTray();
         double GetCurrentAmount();
+        void ReturnCoins();
     }
 }
