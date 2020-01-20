@@ -17,7 +17,7 @@ namespace VendingMachine
         [TestCase(2.5, 19.05, 1.52, 0.01)]
         [TestCase(6.25, 24.26, 1.75, 0.25)]
         [TestCase(2.268, 17.91, 1.35, 0.1)]
-        public void Assert_Correct_Coin_Was_Entered(decimal weight, decimal diameter, decimal thickness, decimal monetaryValue)
+        public void Assert_Correct_Coin_Was_Entered(double weight, double diameter, double thickness, double monetaryValue)
         {
             var attributes = new CoinAttributes(weight, diameter, thickness);
 
@@ -30,7 +30,7 @@ namespace VendingMachine
         [TestCase(2.5, 19.05, 1.52, Coin.Coin.Penny)]
         [TestCase(6.25, 24.26, 1.75, Coin.Coin.Quarter)]
         [TestCase(2.268, 17.91, 1.35, Coin.Coin.Dime)]
-        public void Assert_Correct_Coin_Was_Entered(decimal weight, decimal diameter, decimal thickness, Coin.Coin coin)
+        public void Assert_Correct_Coin_Was_Entered(double weight, double diameter, double thickness, Coin.Coin coin)
         {
             var attributes = new CoinAttributes(weight, diameter, thickness);
 

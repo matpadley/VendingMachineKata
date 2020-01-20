@@ -2,14 +2,14 @@
 {
     public class CoinAttributes
     {
-        public decimal Weight { get; }
-        public decimal Diameter { get; }
-        public decimal Thickness { get; }
+        public double Weight { get; }
+        public double Diameter { get; }
+        public double Thickness { get; }
 
         public Coin Coin { get; private set; }
         public double MonetaryValue { get; private set; }
 
-        public CoinAttributes(decimal weight, decimal diameter, decimal thickness)
+        public CoinAttributes(double weight, double diameter, double thickness)
         {
             Weight = weight;
             Diameter = diameter;

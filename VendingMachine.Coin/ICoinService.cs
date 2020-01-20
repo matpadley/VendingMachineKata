@@ -2,7 +2,7 @@
 {
     public interface ICoinService
     {
-        Coin GetCoin(decimal weight, decimal diameter, decimal thickness);
+        Coin GetCoin(double weight, double diameter, double thickness);
         CoinAttributes GetCoin(CoinAttributes attributes);
     }
 }

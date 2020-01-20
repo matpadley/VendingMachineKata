@@ -46,6 +46,19 @@ namespace VendingMachine.Tests
             Assert.AreEqual(0.1m, _vendingMachine.GetCurrentAmount());
             Assert.AreEqual("0.1", _vendingMachine.GetDisplay());
         }
+
+        [Test]
+        public void Accept_One_Of_Each_Coin_And_Display_And_Total_Updated()
+        {
+            _vendingMachine.InsertCoin(Dime);
+            _vendingMachine.InsertCoin(Nickel);
+            _vendingMachine.InsertCoin(Quarter);
+            _vendingMachine.InsertCoin(Penny);
+            
+            Assert.AreEqual(1, _vendingMachine.GetReturnTray().Count);
+            Assert.AreEqual(0.40, _vendingMachine.GetCurrentAmount());
+            Assert.AreEqual("0.4", _vendingMachine.GetDisplay());
+        }
     }
 
     public class VendMachine : IVendingMachine
