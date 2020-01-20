@@ -1,9 +1,14 @@
-using Moq;
 using NUnit.Framework;
 using VendingMachine.Coin;
 
 namespace VendingMachine.Tests
 {
+    /**
+     * As a customer
+     * I want to have my money returned
+     * So that I can change my mind about buying stuff from the vending machine
+    */
+    
     public class Vending_Machine_Return_Coin_Tests: VendingMachineBaseTest
     {
         private IVendingMachine _vendingMachine;

@@ -2,7 +2,12 @@
 using VendingMachine.Coin;
 
 namespace VendingMachine
-{
+{    
+    /*
+     * As a vendor
+     * I want a vending machine that accepts coins
+     * So that I can collect money from the customer
+     */
     public class Validate_Correct_Coins
     {
         private ICoinService _coinService;

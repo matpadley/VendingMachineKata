@@ -1,9 +1,14 @@
-using Moq;
 using NUnit.Framework;
 using VendingMachine.Coin;
 
 namespace VendingMachine.Tests
 {
+    /*
+     * As a vendor
+     * I want a vending machine that accepts coins
+     * So that I can collect money from the customer
+     */
+    
     public class Vending_Machine_Coin_Tests: VendingMachineBaseTest
     {
         private IVendingMachine _vendingMachine;
