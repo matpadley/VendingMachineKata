@@ -36,6 +36,16 @@ namespace VendingMachine.Tests
             Assert.AreEqual(0, _vendingMachine.GetCurrentAmount());
             Assert.AreEqual("INSERT COIN", _vendingMachine.GetDisplay());
         }
+
+        [Test]
+        public void Dime_Should_Be_Accepted_And_Display_And_Total_Updated()
+        {
+            _vendingMachine.InsertCoin(Dime);
+            
+            Assert.AreEqual(0, _vendingMachine.GetReturnTray().Count);
+            Assert.AreEqual(0.1m, _vendingMachine.GetCurrentAmount());
+            Assert.AreEqual("0.1", _vendingMachine.GetDisplay());
+        }
     }
 
     public class VendMachine : IVendingMachine
@@ -48,17 +58,21 @@ namespace VendingMachine.Tests
         
         private ICollection<CoinAttributes> _insertedCoins;
 
+        private string _currentDisplay;
+
         public VendMachine(ICoinService coinService)
         {
             _coinValidator = new CoinValidator();
             _coinReturn = new Collection<CoinAttributes>();
             _insertedCoins = new Collection<CoinAttributes>();
             _coinService = coinService;
+
+            _currentDisplay = "INSERT COIN";
         }
         
         public string GetDisplay()
         {
-            return "INSERT COIN";
+            return _currentDisplay;
         }
 
         public void InsertCoin(CoinAttributes coinAttributes)
@@ -68,6 +82,8 @@ namespace VendingMachine.Tests
             if (_coinValidator.Validate(coinAttributes.Coin).IsValid)
             {
                 _insertedCoins.Add(coinAttributes);
+
+                _currentDisplay = GetCurrentAmount().ToString();
             }
             else
             {
@@ -76,6 +92,7 @@ namespace VendingMachine.Tests
         }
 
         public ICollection<CoinAttributes> GetReturnTray() => _coinReturn;
+        
         public double GetCurrentAmount() => _insertedCoins.Sum(coin => coin.MonetaryValue);
     }
 
