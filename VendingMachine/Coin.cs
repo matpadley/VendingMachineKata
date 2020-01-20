@@ -4,6 +4,7 @@ namespace VendingMachine
 {
     public enum Coin
     {
+        Invalid,
         Nickel,
         Penny,
         Quarter,

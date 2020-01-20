@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace VendingMachine
 {
-    public class ValidateCoinTests
+    public class Validate_Coin_Tests
     {
         private IValidator _coinValidator;
         
@@ -22,14 +22,5 @@ namespace VendingMachine
             Assert.AreEqual(accept, _coinValidator.Validate(coin).IsValid);
         }
 
-    }
-
-    public class CoinValidator : AbstractValidator<Coin>
-    {
-        // This would go to a data store or some other validation end point, hopefully for multi curreny
-        public CoinValidator()
-        {
-            RuleFor(coin => coin).NotEqual(Coin.Penny);
-        }
     }
 }
