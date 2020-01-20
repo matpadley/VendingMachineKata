@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using VendingMachine.Coin;
+using VendingMachine.Tests;
 
 namespace VendingMachine
 {
@@ -10,5 +11,6 @@ namespace VendingMachine
         ICollection<CoinAttributes> GetReturnTray();
         double GetCurrentAmount();
         void ReturnCoins();
+        void PickProduct(VendingProduct product);
     }
 }

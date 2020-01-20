@@ -11,16 +11,12 @@ namespace VendingMachine.Tests
     
     public class Vending_Machine_Return_Coin_Tests: VendingMachineBaseTest
     {
-        private IVendingMachine _vendingMachine;
-        private ICoinService _coinService;
-        
         [SetUp]
         public void Setup()
         {
-            _coinService = new CoinService();
-            _vendingMachine = new VendMachine(_coinService);
+            base.Setup();
         }
-
+        
         [Test]
         public void Penny_Should_Be_Rejected_Placed_In_Coin_Return()
         {

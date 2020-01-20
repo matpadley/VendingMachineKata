@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using FluentValidation;
 using VendingMachine.Coin;
+using VendingMachine.Tests;
 
 namespace VendingMachine
 {
@@ -13,11 +14,13 @@ namespace VendingMachine
         
         private readonly IValidator _coinValidator;
         
-        private ICollection<CoinAttributes> _coinReturn;
+        private readonly ICollection<CoinAttributes> _coinReturn;
         
-        private ICollection<CoinAttributes> _insertedCoins;
+        private readonly ICollection<CoinAttributes> _insertedCoins;
 
         private string _currentDisplay;
+
+        private bool _vendProduct = false;
 
         public VendMachine(ICoinService coinService)
         {
@@ -31,6 +34,17 @@ namespace VendingMachine
         
         public string GetDisplay()
         {
+            if (_currentDisplay == "THANK YOU" && !_vendProduct)
+            {
+                _vendProduct = true;
+                return _currentDisplay;
+            }
+
+            if (!_vendProduct) return _currentDisplay;
+            
+            _currentDisplay = "INSERT COIN";
+            _vendProduct = false;
+
             return _currentDisplay;
         }
 
@@ -57,6 +71,19 @@ namespace VendingMachine
         {
             _insertedCoins.Clear();
             _currentDisplay = "INSERT COIN";
+        }
+
+        public void PickProduct(VendingProduct product)
+        {
+            if (product.MonetaryValue > GetCurrentAmount())
+            {
+                _currentDisplay =$"PRICE {product.MonetaryValue}";
+            }
+            else
+            {
+                _insertedCoins.Clear();
+                _currentDisplay = "THANK YOU";
+            }
         }
     }
 }
