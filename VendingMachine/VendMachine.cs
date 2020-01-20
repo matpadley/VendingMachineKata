@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using FluentValidation;
-using VendingMachine.Coin;
 using VendingMachine.Interface;
 using VendingMachine.Model;
 using CoinAttributes = VendingMachine.Model.CoinAttributes;

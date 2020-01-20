@@ -1,5 +1,4 @@
 using NUnit.Framework;
-using VendingMachine.Coin;
 
 namespace VendingMachine.Tests
 {

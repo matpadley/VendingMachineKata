@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using NUnit.Framework;
-using VendingMachine.Coin;
+using VendingMachine.Enum;
+using VendingMachine.Validator;
 
 namespace VendingMachine
 {    
@@ -19,11 +20,11 @@ namespace VendingMachine
             _coinValidator = new CoinValidator();
         }
 
-        [TestCase(Coin.Coin.Nickel, true)]
-        [TestCase(Coin.Coin.Dime, true)]
-        [TestCase(Coin.Coin.Quarter, true)]
-        [TestCase(Coin.Coin.Penny, false)]
-        public void Only_Accept_Valid_Coins(Coin.Coin coin, bool accept)
+        [TestCase(Coin.Nickel, true)]
+        [TestCase(Coin.Dime, true)]
+        [TestCase(Coin.Quarter, true)]
+        [TestCase(Coin.Penny, false)]
+        public void Only_Accept_Valid_Coins(Coin coin, bool accept)
         {
             Assert.AreEqual(accept, _coinValidator.Validate(coin).IsValid);
         }

@@ -1,7 +1,6 @@
 using NUnit.Framework;
-using VendingMachine.Coin;
 using VendingMachine.Interface;
-using ICoinService = VendingMachine.Coin.ICoinService;
+using VendingMachine.Service;
 
 namespace VendingMachine.Tests
 {
@@ -13,15 +12,10 @@ namespace VendingMachine.Tests
     
     public class Vending_Machine_Init_Tests: VendingMachineBaseTest
     {
-        private IVendingMachine _vendingMachine;
-        private ICoinService _coinService;
-        
         [SetUp]
         public void Setup()
         {
-            _coinService = new CoinService();
-            
-            _vendingMachine = new VendMachine(_coinService);
+            base.Setup();
         }
 
         [Test]

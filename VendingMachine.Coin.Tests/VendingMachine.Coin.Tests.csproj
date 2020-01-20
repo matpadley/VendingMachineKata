@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VendingMachine.Coin\VendingMachine.Coin.csproj" />
+    <ProjectReference Include="..\VendingMachine\VendingMachine.csproj" />
   </ItemGroup>
 
 </Project>
