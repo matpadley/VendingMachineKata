@@ -5,7 +5,6 @@ using System.Linq;
 using FluentValidation;
 using VendingMachine.Interface;
 using VendingMachine.Model;
-using CoinAttributes = VendingMachine.Model.CoinAttributes;
 using CoinValidator = VendingMachine.Validator.CoinValidator;
 using ICoinService = VendingMachine.Interface.ICoinService;
 
@@ -17,9 +16,9 @@ namespace VendingMachine
         
         private readonly IValidator _coinValidator;
         
-        private readonly ICollection<CoinAttributes> _coinReturn;
+        private readonly ICollection<Coin> _coinReturn;
         
-        private readonly ICollection<CoinAttributes> _insertedCoins;
+        private readonly ICollection<Coin> _insertedCoins;
 
         private string _currentDisplay;
 
@@ -28,8 +27,8 @@ namespace VendingMachine
         public VendMachine(ICoinService coinService)
         {
             _coinValidator = new CoinValidator();
-            _coinReturn = new Collection<CoinAttributes>();
-            _insertedCoins = new Collection<CoinAttributes>();
+            _coinReturn = new Collection<Coin>();
+            _insertedCoins = new Collection<Coin>();
             _coinService = coinService;
 
             _currentDisplay = "INSERT COIN";
@@ -51,23 +50,23 @@ namespace VendingMachine
             return _currentDisplay;
         }
 
-        public void InsertCoin(CoinAttributes coinAttributes)
+        public void InsertCoin(Coin coin)
         {
-            _coinService.GetCoin(coinAttributes);
+            _coinService.GetCoin(coin);
 
-            if (_coinValidator.Validate(coinAttributes.Coin).IsValid)
+            if (_coinValidator.Validate(coin.CoinType).IsValid)
             {
-                _insertedCoins.Add(coinAttributes);
+                _insertedCoins.Add(coin);
 
                 _currentDisplay = GetCurrentAmount().ToString(CultureInfo.CurrentCulture);
             }
             else
             {
-                _coinReturn.Add(coinAttributes);
+                _coinReturn.Add(coin);
             }
         }
 
-        public ICollection<CoinAttributes> GetReturnTray() => _coinReturn;
+        public ICollection<Coin> GetReturnTray() => _coinReturn;
         
         public double GetCurrentAmount() => _insertedCoins.Sum(coin => coin.MonetaryValue);
         public void ReturnCoins()

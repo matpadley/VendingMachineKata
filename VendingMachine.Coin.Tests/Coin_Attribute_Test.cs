@@ -9,7 +9,7 @@ namespace VendingMachine
         [Test]
         public void Coin_Attribute_Is_Valid_After_Construction()
         {
-            var attribute = new CoinAttributes(12,13,14);
+            var attribute = new Coin(12,13,14);
             
             Assert.AreEqual(12, attribute.Weight);
             Assert.AreEqual(13, attribute.Diameter);

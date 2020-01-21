@@ -20,13 +20,13 @@ namespace VendingMachine
             _coinValidator = new CoinValidator();
         }
 
-        [TestCase(Coin.Nickel, true)]
-        [TestCase(Coin.Dime, true)]
-        [TestCase(Coin.Quarter, true)]
-        [TestCase(Coin.Penny, false)]
-        public void Only_Accept_Valid_Coins(Coin coin, bool accept)
+        [TestCase(CoinType.Nickel, true)]
+        [TestCase(CoinType.Dime, true)]
+        [TestCase(CoinType.Quarter, true)]
+        [TestCase(CoinType.Penny, false)]
+        public void Only_Accept_Valid_Coins(CoinType coinType, bool accept)
         {
-            Assert.AreEqual(accept, _coinValidator.Validate(coin).IsValid);
+            Assert.AreEqual(accept, _coinValidator.Validate(coinType).IsValid);
         }
 
     }

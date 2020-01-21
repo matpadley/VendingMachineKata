@@ -1,6 +1,6 @@
 namespace VendingMachine.Enum
 {
-    public enum Coin
+    public enum CoinType
     {
         Invalid,
         Nickel,
