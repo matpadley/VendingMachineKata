@@ -12,6 +12,8 @@ namespace VendingMachine
 {
     public class VendMachine : IVendingMachine
     {
+        private readonly string test;
+        
         private readonly ICoinService _coinService;
         
         private readonly IValidator _coinValidator;
