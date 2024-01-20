@@ -12,13 +12,11 @@
     <LangVersion>8</LangVersion>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="8.6.1" />
+  <ItemGrouup>
+    <PackageReference Include="FluentValidation" Version="11.9.0" />
     <PackageReference Include="nunit" Version="4.0.1" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
-  </ItemGroup>
-
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
   <ItemGroup>
     <ProjectReference Include="..\VendingMachine\VendingMachine.csproj" />
   </ItemGroup>
