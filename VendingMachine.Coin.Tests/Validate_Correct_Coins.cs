@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using FluentAssertions;
+using NUnit.Framework;
 using VendingMachine.Enum;
 using VendingMachine.Interface;
 using VendingMachine.Model;
@@ -11,7 +12,7 @@ namespace VendingMachine
      * I want a vending machine that accepts coins
      * So that I can collect money from the customer
      */
-    public class Validate_Correct_Coins
+    public class ValidateCorrectCoins
     {
         private ICoinService _coinService;
         
@@ -31,7 +32,10 @@ namespace VendingMachine
 
             _coinService.GetCoin(attributes);
             
-            Assert.AreEqual(monetaryValue, attributes.MonetaryValue);
+            attributes
+                .MonetaryValue
+                .Should()
+                .Be(monetaryValue);
         }
         
         [TestCase(2, 21.12, 1.95, CoinType.Nickel)]
@@ -44,7 +48,10 @@ namespace VendingMachine
 
             _coinService.GetCoin(attributes);
             
-            Assert.AreEqual(coinType, attributes.CoinType);
+            attributes
+                .CoinType
+                .Should()
+                .Be(coinType);
         }
     }
 }
