@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+﻿using FluentAssertions;
 using NUnit.Framework;
 using VendingMachine.Enum;
 using VendingMachine.Validator;
@@ -10,9 +10,9 @@ namespace VendingMachine
      * I want a vending machine that accepts coins
      * So that I can collect money from the customer
      */
-    public class Allowed_Coin_Tests
+    public class AllowedCoinTests
     {
-        private IValidator _coinValidator;
+        private CoinValidator _coinValidator;
         
         [SetUp]
         public void Setup()
@@ -26,7 +26,11 @@ namespace VendingMachine
         [TestCase(CoinType.Penny, false)]
         public void Only_Accept_Valid_Coins(CoinType coinType, bool accept)
         {
-            Assert.AreEqual(accept, _coinValidator.Validate(coinType).IsValid);
+            _coinValidator
+                .Validate(coinType)
+                .IsValid
+                .Should()
+                .Be(accept);
         }
 
     }

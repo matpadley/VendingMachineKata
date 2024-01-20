@@ -2,7 +2,6 @@
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using FluentValidation;
 using VendingMachine.Interface;
 using VendingMachine.Model;
 using CoinValidator = VendingMachine.Validator.CoinValidator;
@@ -12,11 +11,9 @@ namespace VendingMachine
 {
     public class VendMachine : IVendingMachine
     {
-        private readonly string test;
-        
         private readonly ICoinService _coinService;
         
-        private readonly IValidator _coinValidator;
+        private readonly CoinValidator _coinValidator;
         
         private readonly ICollection<Coin> _coinReturn;
         

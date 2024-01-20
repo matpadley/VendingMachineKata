@@ -7,22 +7,21 @@ namespace VendingMachine.Tests
 {
     public abstract class VendingMachineBaseTest
     {
-        protected Coin Nickel => new Coin(2, 21.12, 1.95);
-        protected Coin Dime => new Coin(2.268, 17.91, 1.35);
-        protected Coin Penny => new Coin(2.5, 19.05, 1.52);
-        protected Coin Quarter => new Coin(6.25, 24.26, 1.75);
+        protected static Coin Nickel => new(2, 21.12, 1.95);
+        protected static Coin Dime => new(2.268, 17.91, 1.35);
+        protected static Coin Penny => new(2.5, 19.05, 1.52);
+        protected static Coin Quarter => new(6.25, 24.26, 1.75);
+        protected static VendingProduct Cola => new(1, "Cola");
         
-        protected VendingProduct Cola => new VendingProduct(1, "Cola");
-        
-        protected IVendingMachine _vendingMachine;
-        
-        protected ICoinService _coinService;
+        protected IVendingMachine VendingMachine;
+
+        private ICoinService _coinService;
         
         [SetUp]
         public void Setup()
         {
             _coinService = new CoinService();
-            _vendingMachine = new VendMachine(_coinService);
+            VendingMachine = new VendMachine(_coinService);
         }
     }
 }

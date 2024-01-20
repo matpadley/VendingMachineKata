@@ -1,6 +1,5 @@
+using FluentAssertions;
 using NUnit.Framework;
-using VendingMachine.Interface;
-using VendingMachine.Service;
 
 namespace VendingMachine.Tests
 {
@@ -10,18 +9,15 @@ namespace VendingMachine.Tests
      * So that I can collect money from the customer
      */
     
-    public class Vending_Machine_Init_Tests: VendingMachineBaseTest
+    public class VendingMachineInitTests: VendingMachineBaseTest
     {
-        [SetUp]
-        public void Setup()
-        {
-            base.Setup();
-        }
-
         [Test]
         public void Machine_Should_Display_Correct_Message_On_Start()
         {
-            Assert.AreEqual("INSERT COIN", _vendingMachine.GetDisplay());
+            VendingMachine
+                .GetDisplay()
+                .Should()
+                .Be("INSERT COIN");
         }
     }
 }
